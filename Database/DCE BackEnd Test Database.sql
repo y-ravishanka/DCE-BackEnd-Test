@@ -1,14 +1,34 @@
 
-create database dceBackEndTest
+CREATE DATABASE dceBackEndTest
 
-use dceBackEndTest
+USE dceBackEndTest
 
-create table Customer
+CREATE TABLE Customer
 (
-	UserId int identity(1,1),
-	Username varchar(30),
-	Email varchar(20),
-	FirstName varchar(20),
-	LastName varchar(20),
-	CreatedOn datetime,
-	IsActive bit default(1),	primary key (UserId));select * from Customerdelete Customerdrop table Customer
+	UserId INT IDENTITY(1,1),
+	Username VARCHAR(30),
+	Email VARCHAR(20),
+	FirstName VARCHAR(20),
+	LastName VARCHAR(20),
+	CreatedOn DATETIME,
+	IsActive BIT DEFAULT(1),
+	PRIMARY KEY (UserId)
+);
+
+SELECT * FROM Customer
+DELETE Customer
+DROP TABLE Customer
+
+create table Supplier
+(
+	SupplierId int identity(1,1),
+	SupplierName VARCHAR(50) NOT NULL,
+	CreatedOn DATETIME NOT NULL,
+	IsActive BIT DEFAULT(1)
+)
+
+SELECT * FROM Supplier
+DELETE Supplier
+DROP TABLE Supplier
+
+
