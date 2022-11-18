@@ -7,6 +7,7 @@ namespace DCE_BackEnd_Test.Services
         private readonly SqlConnection con = new(@"Data Source=DESKTOP-1G3ODQ5;Initial Catalog=dceBackEndTest;Integrated Security=True;Encrypt=True;TrustServerCertificate=True");
         private string? que = null;
 
+        #region Check Database Connection
         bool IDatabase.CheckConnection()
         {
             bool test = false;
@@ -29,5 +30,6 @@ namespace DCE_BackEnd_Test.Services
             GC.Collect();
             return test;
         }
+        #endregion
     }
 }
