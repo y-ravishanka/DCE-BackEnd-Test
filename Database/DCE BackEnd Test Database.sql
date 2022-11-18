@@ -19,7 +19,7 @@ SELECT * FROM Customer
 DELETE Customer
 DROP TABLE Customer
 
-create table Supplier
+CREATE TABLE Supplier
 (
 	SupplierId int identity(1,1),
 	SupplierName VARCHAR(50) NOT NULL,
