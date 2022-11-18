@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using DCE_BackEnd_Test.Services;
 
 namespace DCE_BackEnd_Test.Controllers
 {
@@ -6,6 +7,8 @@ namespace DCE_BackEnd_Test.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
+        private IDatabase db = new Database();
+
         private static readonly string[] Summaries = new[]
         {
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
@@ -28,6 +31,13 @@ namespace DCE_BackEnd_Test.Controllers
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
             .ToArray();
+        }
+
+        [HttpGet]
+        [Route("TestDatabaseConnection")]
+        public ActionResult<bool> TestDatabaseConnection()
+        {
+            return db.CheckConnection();
         }
     }
 }
