@@ -50,12 +50,12 @@ CREATE TABLE Product
 	CreatedOn DATETIME NOT NULL,
 	IsActive BIT DEFAULT(1),
 	PRIMARY KEY (ProductId)
-)
+);
 
 /* basic Product table function queries */
-SELECT * FROM Product
-DELETE Product
-DROP TABLE Product
+SELECT * FROM Product;
+DELETE Product;
+DROP TABLE Product;
 
 /* Supplier table sql script */
 CREATE TABLE Supplier
