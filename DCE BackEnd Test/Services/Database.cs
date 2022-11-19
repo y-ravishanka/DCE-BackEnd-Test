@@ -126,6 +126,22 @@ namespace DCE_BackEnd_Test.Services
         bool IDatabase.DeleteCustomer(string id)
         {
             bool response = false;
+            que = "delete from Customer where UserId = '"+id+"'";
+            SqlCommand cmd = new(que, con);
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+                response = true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                response = false;
+            }
+            finally
+            { con.Close(); }
+            GC.Collect();
             return response;
         }
 
