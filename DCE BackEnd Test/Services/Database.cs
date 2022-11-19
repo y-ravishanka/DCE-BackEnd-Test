@@ -150,9 +150,45 @@ namespace DCE_BackEnd_Test.Services
         {
             List<Order> list = new();
             Order order;
-            Product product;
-            Supplier supplier;
             que = "exec GetActiveOrders @UserId = '"+id+"'";
+            SqlCommand cmd = new(que, con);
+            try
+            {
+                con.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                if(dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        order = new Order
+                        {
+                            OrderId = dr.GetString(0),
+                            OrderStatus = dr.GetInt32(1),
+                            OrderType = dr.GetInt32(2),
+                            OrderedOn = dr.GetDateTime(3),
+                            ShippedOn = dr.GetDateTime(4),
+                            ProductId = dr.GetString(5),
+                            ProductName = dr.GetString(6),
+                            ProductUnitPrice = dr.GetDecimal(7),
+                            ProductCreatedOn = dr.GetDateTime(8),
+                            ProductIsActive = cal.IntToBoolConvert(dr.GetInt32(9)),
+                            SupplierId = dr.GetString(10),
+                            SupplierName = dr.GetString(11),
+                            SupplierCreatedOn = dr.GetDateTime(12),
+                            SupplierIsActive = cal.IntToBoolConvert(dr.GetInt32(13))
+                        };
+                        list.Add(order);
+                    }
+                }
+                dr.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            { con.Close(); }
+            GC.Collect();
             return list;
         }
         #endregion
