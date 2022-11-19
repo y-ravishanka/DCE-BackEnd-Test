@@ -19,6 +19,25 @@ SELECT * FROM Customer
 DELETE Customer
 DROP TABLE Customer
 
+/* Order table sql script */
+CREATE TABLE [Order]
+(
+	OrderId UNIQUEIDENTIFIER DEFAULT NEWID(),
+	ProductId UNIQUEIDENTIFIER NOT NULL,
+	OrderStatus INT(1) NOT NULL,
+	OrderType INT(1) NOT NULL,
+	OrderBy UNIQUEIDENTIFIER NOT NULL,
+	OrderedOn DATETIME NOT NULL,
+	ShippedOn DATETIME NOT NULL,
+	IsActive BIT DEFAULT(1),
+	PRIMARY KEY (OrderId)
+)
+
+/* basic Order table function queries */
+SELECT * FROM [Order]
+DELETE [Order]
+DROP TABLE [Order]
+
 CREATE TABLE Supplier
 (
 	SupplierId int identity(1,1),
