@@ -2,5 +2,7 @@
 {
     internal interface ICalculation
     {
+        int BoolToIntConvert(bool t);
+        bool IntToBoolConvert(int t);
     }
 }
