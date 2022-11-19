@@ -100,9 +100,25 @@ namespace DCE_BackEnd_Test.Services
         }
 
         // a method to update a customer data of the database
-        bool IDatabase.UpdateCustomer(string id)
+        bool IDatabase.UpdateCustomer(Customer cus)
         {
             bool response = false;
+            que = "update Customer set Username = '"+cus.Username+"', Email = '"+cus.Email+"', FirstName = '"+cus.FirstName+"', LastName = '"+cus.LastName+"', CreatedOn = '"+cus.CreatedOn+"' where UserId = '"+cus.UserId+"'";
+            SqlCommand cmd = new(que, con);
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+                response = true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                response = false;
+            }
+            finally
+            { con.Close(); }
+            GC.Collect();
             return response;
         }
 
