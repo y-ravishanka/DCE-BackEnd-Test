@@ -64,7 +64,7 @@ namespace DCE_BackEnd_Test.Services
         {
             List<Customer> list = new();
             Customer cus;
-            que = "select * from Customer";
+            que = "select (UserId,Username,Email,FirstName,LastName,CreatedOn,IsActive) from Customer";
             SqlCommand cmd = new(que, con);
             try
             {
@@ -145,12 +145,57 @@ namespace DCE_BackEnd_Test.Services
             return response;
         }
 
+        // a method to get all active orders with product details and supplier details by customers from the database
+        List<Order> IDatabase.ActiveOrdersByCustomer(string id)
+        {
+            List<Order> list = new();
+            return list;
+        }
         #endregion
 
         #region Supplier Section
+        // a method to get supplier details from database by supplier id
+        Supplier IDatabase.GetSupplierById(string id)
+        {
+            Supplier supplier = new();
+            return supplier;
+        }
         #endregion
 
         #region  Product Section
+        // a method to get product details from database by product id
+        Product IDatabase.GetProductById(string id)
+        {
+            Product product = new();
+            que = "select (ProductId,ProductName,UnitPrice,SupplierId,CreatedOn,IsActive) from Product where ProductId = '"+id+"'";
+            SqlCommand cmd = new(que, con);
+            try
+            {
+                con.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                if(dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        product.ProductId = dr.GetString(0);
+                        product.ProductName = dr.GetString(1);
+                        product.UnitPrice = dr.GetDecimal(2);
+                        product.SupplierId = dr.GetString(3);
+                        product.CreatedOn = dr.GetDateTime(4);
+                        product.IsActive = cal.IntToBoolConvert(dr.GetInt32(5));
+                    }
+                }
+                dr.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            { con.Close(); }
+            GC.Collect();
+            return product;
+        }
         #endregion
     }
 }
