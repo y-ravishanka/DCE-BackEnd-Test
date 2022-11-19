@@ -40,14 +40,16 @@ SELECT * FROM [Order]
 DELETE [Order]
 DROP TABLE [Order]
 
+/* Supplier table sql script */
 CREATE TABLE Supplier
 (
-	SupplierId int identity(1,1),
+	SupplierId UNIQUEIDENTIFIER DEFAULT NEWID(),
 	SupplierName VARCHAR(50) NOT NULL,
 	CreatedOn DATETIME NOT NULL,
 	IsActive BIT DEFAULT(1)
 )
 
+/* basic Supplier table function queries */
 SELECT * FROM Supplier
 DELETE Supplier
 DROP TABLE Supplier
