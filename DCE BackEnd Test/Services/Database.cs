@@ -126,7 +126,7 @@ namespace DCE_BackEnd_Test.Services
         bool IDatabase.DeleteCustomer(string id)
         {
             bool response = false;
-            que = "delete from Customer where UserId = '"+id+"'";
+            que = "update Customer set IsActive = 0 where CustomerId = '"+id+"'";
             SqlCommand cmd = new(que, con);
             try
             {
