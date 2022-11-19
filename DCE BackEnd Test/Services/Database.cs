@@ -63,6 +63,39 @@ namespace DCE_BackEnd_Test.Services
         List<Customer> IDatabase.GetCustomers()
         {
             List<Customer> list = new();
+            Customer cus;
+            que = "select * from Customer";
+            SqlCommand cmd = new(que, con);
+            try
+            {
+                con.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                if(dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        cus = new Customer
+                        {
+                            UserId = dr.GetString(0),
+                            Username = dr.GetString(1),
+                            Email = dr.GetString(2),
+                            FirstName = dr.GetString(3),
+                            LastName = dr.GetString(4),
+                            CreatedOn = dr.GetDateTime(5),
+                            IsActive = cal.IntToBoolConvert(dr.GetInt32(6))
+                        };
+                        list.Add(cus);
+                    }
+                }
+                dr.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            { con.Close(); }
+            GC.Collect();
             return list;
         }
 
