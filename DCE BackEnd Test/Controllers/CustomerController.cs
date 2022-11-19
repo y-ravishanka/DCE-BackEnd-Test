@@ -60,5 +60,19 @@ namespace DCE_BackEnd_Test.Controllers
             }
         }
         
+        [HttpPost]
+        [Route("UpdateCustomer")]
+        public ActionResult<bool> UpdateCustomer(Customer cus)
+        {
+            try
+            {
+                bool t = db.UpdateCustomer(cus);
+                return Ok(t);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }
