@@ -10,5 +10,24 @@ namespace DCE_BackEnd_Test.Controllers
     public class CustomerController : ControllerBase
     {
         private IDatabase db = new Database();
+
+        [HttpGet]
+        [Route("GetAllCustomers")]
+        public ActionResult<List<Customer>> GetAllCustomers()
+        {
+            List<Customer> list;
+            try
+            {
+                list = db.GetCustomers();
+                if(list[0].UserId == null || list[0].UserId == "")
+                { return (NotFound()); }
+                else
+                { return (Ok(list)); }
+            }
+            catch (Exception ex)
+            {
+                return (BadRequest(ex.Message));
+            }
+        }
     }
 }
