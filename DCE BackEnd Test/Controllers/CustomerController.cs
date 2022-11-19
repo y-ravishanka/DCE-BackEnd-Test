@@ -29,5 +29,20 @@ namespace DCE_BackEnd_Test.Controllers
                 return (BadRequest(ex.Message));
             }
         }
+
+        [HttpDelete]
+        [Route("DeleteCustomer/{CustomerId}")]
+        public ActionResult<bool> DeleteCustomer(string CustomerId)
+        {
+            try
+            {
+                bool t = db.DeleteCustomer(CustomerId);
+                return Ok(t);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }
