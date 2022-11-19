@@ -3,9 +3,10 @@ CREATE DATABASE dceBackEndTest
 
 USE dceBackEndTest
 
+/* Customer table sql script */
 CREATE TABLE Customer
 (
-	UserId INT IDENTITY(1,1),
+	UserId UNIQUEIDENTIFIER DEFAULT NEWID(),
 	Username VARCHAR(30),
 	Email VARCHAR(20),
 	FirstName VARCHAR(20),
@@ -15,6 +16,7 @@ CREATE TABLE Customer
 	PRIMARY KEY (UserId)
 );
 
+/* basic Customer table function queries */
 SELECT * FROM Customer
 DELETE Customer
 DROP TABLE Customer
