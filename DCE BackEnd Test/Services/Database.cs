@@ -158,6 +158,31 @@ namespace DCE_BackEnd_Test.Services
         Supplier IDatabase.GetSupplierById(string id)
         {
             Supplier supplier = new();
+            que = "select (SupplierId,SupplierName,CreatedOn,IsActive) from Supplier where SupplierId = '"+id+"'";
+            SqlCommand cmd = new(que, con);
+            try
+            {
+                con.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                if(dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        supplier.SupplierId = dr.GetString(0);
+                        supplier.SupplierName = dr.GetString(1);
+                        supplier.CreatedOn = dr.GetDateTime(2);
+                        supplier.IsActive = cal.IntToBoolConvert(dr.GetInt32(3));
+                    }
+                }
+                dr.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            { con.Close(); }
+            GC.Collect();
             return supplier;
         }
         #endregion
