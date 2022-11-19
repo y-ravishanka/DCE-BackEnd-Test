@@ -19,7 +19,7 @@ namespace DCE_BackEnd_Test.Controllers
             try
             {
                 list = db.GetCustomers();
-                if(list[0].UserId == null || list[0].UserId == "")
+                if(list.Count == 0)
                 { return (NotFound()); }
                 else
                 { return (Ok(list)); }
