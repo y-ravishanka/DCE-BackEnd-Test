@@ -5,6 +5,7 @@ namespace DCE_BackEnd_Test.Services
 {
     internal class Database : IDatabase
     {
+        private ICalculation cal = new Calculation();
         private readonly SqlConnection con = new(@"Data Source=DESKTOP-1G3ODQ5;Initial Catalog=dceBackEndTest;Integrated Security=True;Encrypt=True;TrustServerCertificate=True");
         private string? que = null;
 
@@ -38,7 +39,7 @@ namespace DCE_BackEnd_Test.Services
         bool IDatabase.InsertCustomer(Customer cus)
         {
             bool response = false;
-            int IsActive = 0;
+            int IsActive = cal.BoolToIntConvert(cus.IsActive);
             que = "insert into(UserId,Username,Email,FirstName,LastName,CreatedOn,IsActive) values( default,'" + cus.Username + "','" + cus.Email + "','" + cus.FirstName + "','" + cus.LastName + "','" + cus.CreatedOn + "'," + IsActive + ")";
             SqlCommand cmd = new(que, con);
             try
