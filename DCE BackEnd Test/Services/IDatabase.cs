@@ -14,6 +14,7 @@ namespace DCE_BackEnd_Test.Services
         List<Order> ActiveOrdersByCustomer(string id);
         #endregion
 
+        /*
         #region Product Section
         Product GetProductById(string id);
         #endregion
@@ -21,5 +22,6 @@ namespace DCE_BackEnd_Test.Services
         #region Supplier Section
         Supplier GetSupplierById(string id);
         #endregion
+        */
     }
 }

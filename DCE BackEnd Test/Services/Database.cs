@@ -64,7 +64,7 @@ namespace DCE_BackEnd_Test.Services
         {
             List<Customer> list = new();
             Customer cus;
-            que = "select (UserId,Username,Email,FirstName,LastName,CreatedOn,IsActive) from Customer";
+            que = "select UserId,Username,Email,FirstName,LastName,CreatedOn,IsActive from Customer";
             SqlCommand cmd = new(que, con);
             try
             {
@@ -149,16 +149,21 @@ namespace DCE_BackEnd_Test.Services
         List<Order> IDatabase.ActiveOrdersByCustomer(string id)
         {
             List<Order> list = new();
+            Order order;
+            Product product;
+            Supplier supplier;
+            que = "exec GetActiveOrders @UserId = '"+id+"'";
             return list;
         }
         #endregion
 
+        /*
         #region Supplier Section
         // a method to get supplier details from database by supplier id
         Supplier IDatabase.GetSupplierById(string id)
         {
             Supplier supplier = new();
-            que = "select (SupplierId,SupplierName,CreatedOn,IsActive) from Supplier where SupplierId = '"+id+"'";
+            que = "select SupplierId,SupplierName,CreatedOn,IsActive from Supplier where SupplierId = '"+id+"'";
             SqlCommand cmd = new(que, con);
             try
             {
@@ -192,7 +197,7 @@ namespace DCE_BackEnd_Test.Services
         Product IDatabase.GetProductById(string id)
         {
             Product product = new();
-            que = "select (ProductId,ProductName,UnitPrice,SupplierId,CreatedOn,IsActive) from Product where ProductId = '"+id+"'";
+            que = "select ProductId,ProductName,UnitPrice,SupplierId,CreatedOn,IsActive from Product where ProductId = '"+id+"'";
             SqlCommand cmd = new(que, con);
             try
             {
@@ -222,5 +227,6 @@ namespace DCE_BackEnd_Test.Services
             return product;
         }
         #endregion
+        */
     }
 }
