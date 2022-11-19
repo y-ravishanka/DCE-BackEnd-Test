@@ -72,3 +72,19 @@ DELETE Supplier;
 DROP TABLE Supplier;
 
 
+/*
+stored procedure for getting all the active Orders by Customer
+product details and supplier details are included
+*/
+
+CREATE PROCEDURE GetActiveOrders
+@UserId VARCHAR(100)
+AS
+select o.OrderId,o.OrderStatus,o.OrderType,o.OrderedOn,o.ShippedOn,p.ProductId,p.ProductName,p.UnitPrice,p.CreatedOn,p.IsActive,s.SupplierId,s.SupplierName,s.CreatedOn,s.IsActive 
+from [Order] as o,[Product] as p, [Supplier] as s 
+where o.OrderBy = @UserId and o.ProductId = p.ProductId and p.SupplierId = s.SupplierId and o.IsActive = 1;
+
+------------------------------------------------------------
+
+-- test procedure
+exec GetActiveOrders @UserId = '3D9DFA9D-88A1-42C8-BB3F-C00CCC94DDEB';
