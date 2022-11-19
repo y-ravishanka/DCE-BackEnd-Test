@@ -9,7 +9,7 @@ namespace DCE_BackEnd_Test.Services
         #region  Customer Section
         bool InsertCustomer(Customer cus);
         List<Customer> GetCustomers();
-        bool UpdateCustomer(string id);
+        bool UpdateCustomer(Customer cus);
         bool DeleteCustomer(string id);
         #endregion
     }
