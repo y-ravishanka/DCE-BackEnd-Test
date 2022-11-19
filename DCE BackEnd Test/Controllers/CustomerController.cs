@@ -44,5 +44,21 @@ namespace DCE_BackEnd_Test.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpPost]
+        [Route("CreateCustomer")]
+        public ActionResult<bool> CreateCustomer(Customer cus)
+        {
+            try
+            {
+                bool t = db.InsertCustomer(cus);
+                return Ok(t);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        
     }
 }
