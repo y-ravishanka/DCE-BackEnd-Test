@@ -1,0 +1,122 @@
+{
+	"info": {
+		"_postman_id": "f1218ae9-8d51-46e8-a841-39dbf6db2c7a",
+		"name": "DCE_BackEnd_Test APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20860742"
+	},
+	"item": [
+		{
+			"name": "GetAllCustomers",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "GetActiveOrdersByCustomer",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7207/api/Customer/GetActiveOrdersByCustomer/F5977E80-7942-4A3F-B58E-12CE95E192D0",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7207",
+					"path": [
+						"api",
+						"Customer",
+						"GetActiveOrdersByCustomer",
+						"F5977E80-7942-4A3F-B58E-12CE95E192D0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteCustomer",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7207/api/Customer/DeleteCustomer/F5977E80-7942-4A3F-B58E-12CE95E192D0",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7207",
+					"path": [
+						"api",
+						"Customer",
+						"DeleteCustomer",
+						"F5977E80-7942-4A3F-B58E-12CE95E192D0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateCustomer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"userId\": \"F5977E80-7942-4A3F-B58E-12CE95E192D0\",\r\n  \"username\": \"hello123\",\r\n  \"email\": \"hello123@hello.com\",\r\n  \"firstName\": \"hello\",\r\n  \"lastName\": \"123\",\r\n  \"createdOn\": \"2022-11-20T18:25:05.298Z\",\r\n  \"isActive\": true\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7207/api/Customer/UpdateCustomer",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7207",
+					"path": [
+						"api",
+						"Customer",
+						"UpdateCustomer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateCustomer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"userId\": \"default\",\r\n  \"username\": \"Hi321\",\r\n  \"email\": \"Hi321@Hi.com\",\r\n  \"firstName\": \"Hi\",\r\n  \"lastName\": \"321\",\r\n  \"createdOn\": \"2022-11-20T18:35:57.340Z\",\r\n  \"isActive\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7207/api/Customer/CreateCustomer",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7207",
+					"path": [
+						"api",
+						"Customer",
+						"CreateCustomer"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
