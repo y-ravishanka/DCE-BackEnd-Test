@@ -101,3 +101,8 @@ where o.OrderBy = @UserId and o.ProductId = p.ProductId and p.SupplierId = s.Sup
 
 -- test procedure
 exec GetActiveOrders @UserId = '3D9DFA9D-88A1-42C8-BB3F-C00CCC94DDEB';
+
+insert into Customer(UserId,Username,Email,FirstName,LastName,CreatedOn) values(default,'hello123','hello123@hello.com','hello','123',GETDATE());
+insert into Supplier(SupplierId,SupplierName,CreatedOn) values(default,'supun kade',GETDATE());
+insert into Product(ProductId,ProductName,UnitPrice,SupplierId,CreatedOn) values(default,'milk powder',975,'FF994E76-2E2D-4C6B-B6BE-4AF29EBD13A0',GETDATE());
+insert into [Order](OrderId,ProductId,OrderStatus,OrderType,OrderBy,OrderedOn,ShippedOn) values(default,'EF6FDE89-259C-4A80-9043-2A3D3C34541A',1,5,'F5977E80-7942-4A3F-B58E-12CE95E192D0',GETDATE(),GETDATE());
