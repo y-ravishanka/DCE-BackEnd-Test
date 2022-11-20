@@ -82,7 +82,7 @@ namespace DCE_BackEnd_Test.Services
                             FirstName = dr.GetString(3),
                             LastName = dr.GetString(4),
                             CreatedOn = dr.GetDateTime(5),
-                            IsActive = cal.IntToBoolConvert(dr.GetInt32(6))
+                            IsActive = dr.GetBoolean(6)
                         };
                         list.Add(cus);
                     }
@@ -162,7 +162,7 @@ namespace DCE_BackEnd_Test.Services
                     {
                         order = new Order
                         {
-                            OrderId = dr.GetString(0),
+                            OrderId = dr.GetSqlGuid(0).ToString(),
                             OrderStatus = dr.GetInt32(1),
                             OrderType = dr.GetInt32(2),
                             OrderedOn = dr.GetDateTime(3),
@@ -171,11 +171,11 @@ namespace DCE_BackEnd_Test.Services
                             ProductName = dr.GetString(6),
                             ProductUnitPrice = dr.GetDecimal(7),
                             ProductCreatedOn = dr.GetDateTime(8),
-                            ProductIsActive = cal.IntToBoolConvert(dr.GetInt32(9)),
+                            ProductIsActive = dr.GetBoolean(9),
                             SupplierId = dr.GetString(10),
                             SupplierName = dr.GetString(11),
                             SupplierCreatedOn = dr.GetDateTime(12),
-                            SupplierIsActive = cal.IntToBoolConvert(dr.GetInt32(13))
+                            SupplierIsActive = dr.GetBoolean(13)
                         };
                         list.Add(order);
                     }
