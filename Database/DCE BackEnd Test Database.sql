@@ -63,7 +63,8 @@ CREATE TABLE Supplier
 	SupplierId UNIQUEIDENTIFIER DEFAULT NEWID(),
 	SupplierName VARCHAR(50) NOT NULL,
 	CreatedOn DATETIME NOT NULL,
-	IsActive BIT DEFAULT(1)
+	IsActive BIT DEFAULT(1),
+	PRIMARY KEY (SupplierId)
 );
 
 /* basic Supplier table function queries */
@@ -77,7 +78,10 @@ ADD FOREIGN KEY (ProductId) REFERENCES Product(ProductId);
 
 ALTER TABLE [Order]
 ADD FOREIGN KEY (OrderBy) REFERENCES Customer(UserId);
-
+/*
+ALTER TABLE [Supplier]
+ADD PRIMARY KEY (SupplierId)
+*/
 ALTER TABLE [Product]
 ADD FOREIGN KEY (SupplierId) REFERENCES Supplier(SupplierId);
 
