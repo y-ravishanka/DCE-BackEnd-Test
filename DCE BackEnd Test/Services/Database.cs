@@ -76,7 +76,7 @@ namespace DCE_BackEnd_Test.Services
                     {
                         cus = new Customer
                         {
-                            UserId = dr.GetString(0),
+                            UserId = dr.GetSqlGuid(0).ToString(),
                             Username = dr.GetString(1),
                             Email = dr.GetString(2),
                             FirstName = dr.GetString(3),
