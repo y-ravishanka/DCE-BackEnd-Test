@@ -40,7 +40,7 @@ namespace DCE_BackEnd_Test.Services
         {
             bool response = false;
             int IsActive = cal.BoolToIntConvert(cus.IsActive);
-            que = "insert into(UserId,Username,Email,FirstName,LastName,CreatedOn,IsActive) values( default,'" + cus.Username + "','" + cus.Email + "','" + cus.FirstName + "','" + cus.LastName + "','" + cus.CreatedOn + "'," + IsActive + ")";
+            que = "insert into Customer(UserId,Username,Email,FirstName,LastName,CreatedOn,IsActive) values( default,'" + cus.Username + "','" + cus.Email + "','" + cus.FirstName + "','" + cus.LastName + "','" + cus.CreatedOn + "'," + IsActive + ")";
             SqlCommand cmd = new(que, con);
             try
             {
