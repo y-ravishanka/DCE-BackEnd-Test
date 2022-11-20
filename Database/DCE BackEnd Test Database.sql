@@ -71,6 +71,15 @@ SELECT * FROM Supplier;
 DELETE Supplier;
 DROP TABLE Supplier;
 
+-- creating the foreign keys
+ALTER TABLE [Order]
+ADD FOREIGN KEY (ProductId) REFERENCES Product(ProductId);
+
+ALTER TABLE [Order]
+ADD FOREIGN KEY (OrderBy) REFERENCES Customer(UserId);
+
+ALTER TABLE [Product]
+ADD FOREIGN KEY (SupplierId) REFERENCES Supplier(SupplierId);
 
 /*
 stored procedure for getting all the active Orders by Customer
