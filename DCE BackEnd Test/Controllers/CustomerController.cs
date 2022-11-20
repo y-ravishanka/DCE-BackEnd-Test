@@ -30,6 +30,25 @@ namespace DCE_BackEnd_Test.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("GetActiveOrdersByCustomer/{CustomerId}")]
+        public ActionResult<List<Order>> GetActiveOrdersByCustomer(string CustomerId)
+        {
+            List<Order> list;
+            try
+            {
+                list = db.ActiveOrdersByCustomer(CustomerId);
+                if (list.Count == 0)
+                { return (NotFound()); }
+                else
+                { return (Ok(list)); }
+            }
+            catch (Exception ex)
+            {
+                return (BadRequest(ex.Message));
+            }
+        }
+
         [HttpDelete]
         [Route("DeleteCustomer/{CustomerId}")]
         public ActionResult<bool> DeleteCustomer(string CustomerId)
