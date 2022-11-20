@@ -126,7 +126,7 @@ namespace DCE_BackEnd_Test.Services
         bool IDatabase.DeleteCustomer(string id)
         {
             bool response = false;
-            que = "update Customer set IsActive = 0 where CustomerId = '"+id+"'";
+            que = "update Customer set IsActive = 0 where UserId = '"+id+"'";
             SqlCommand cmd = new(que, con);
             try
             {
@@ -167,12 +167,12 @@ namespace DCE_BackEnd_Test.Services
                             OrderType = dr.GetInt32(2),
                             OrderedOn = dr.GetDateTime(3),
                             ShippedOn = dr.GetDateTime(4),
-                            ProductId = dr.GetString(5),
+                            ProductId = dr.GetSqlGuid(5).ToString(),
                             ProductName = dr.GetString(6),
                             ProductUnitPrice = dr.GetDecimal(7),
                             ProductCreatedOn = dr.GetDateTime(8),
                             ProductIsActive = dr.GetBoolean(9),
-                            SupplierId = dr.GetString(10),
+                            SupplierId = dr.GetSqlGuid(10).ToString(),
                             SupplierName = dr.GetString(11),
                             SupplierCreatedOn = dr.GetDateTime(12),
                             SupplierIsActive = dr.GetBoolean(13)
